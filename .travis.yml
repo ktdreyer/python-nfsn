@@ -3,6 +3,11 @@ python:
   - "2.7"
 install:
   - pip install pytest-cov python-coveralls
+    # python-coveralls requires coverage 3.
+    # See https://github.com/z4r/python-coveralls/pull/41
+    # (The fact that I have to specify this version number at all seems that
+    # the python-coveralls packaging is broken...)
+  - pip install coverage==3.7.1
 script:
   - python setup.py test -a "--cov-config .coveragerc --cov=nfsn"
 after_success:
