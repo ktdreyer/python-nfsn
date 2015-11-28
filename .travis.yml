@@ -1,0 +1,10 @@
+language: python
+python:
+  - "2.7"
+install:
+  - pip install pytest-cov python-coveralls
+script:
+  - python setup.py test -a "--cov-config .coveragerc --cov=nfsn"
+after_success:
+  - coveralls
+cache: pip
