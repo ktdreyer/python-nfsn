@@ -1,5 +1,12 @@
 `python-nfsn`
 =============
+
+.. image:: https://travis-ci.org/ktdreyer/python-nfsn.svg?branch=master
+       :target: https://travis-ci.org/ktdreyer/python-nfsn
+
+.. image:: https://coveralls.io/repos/ktdreyer/python-nfsn/badge.svg?branch=master&service=github
+     :target: https://coveralls.io/github/ktdreyer/python-nfsn?branch=master
+
 A modern Python library for accessing NearlyFreeSpeech.net's API.
 
 * Clean, Pythonic API
