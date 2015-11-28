@@ -3,6 +3,7 @@ import httpretty
 import os
 import pytest
 import re
+from shutil import copyfile
 import urlparse
 
 tests_dir = os.path.dirname(os.path.abspath(__file__))
@@ -57,7 +58,7 @@ class NfsnTest(object):
 
 class TestNfsnConstructor(NfsnTest):
 
-    def test_constructor_no_args(self, monkeypatch, tmpdir):
+    def test_constructor_no_args_file_missing(self, monkeypatch, tmpdir):
         monkeypatch.setenv('HOME', str(tmpdir))
         with pytest.raises(IOError):
             Nfsn()
@@ -77,6 +78,13 @@ class TestNfsnConstructor(NfsnTest):
     def test_constructor_loginfile(self):
         login_file = os.path.join(fixtures_dir, 'nfsn-api-credential')
         nfsn = Nfsn(login_file=login_file)
+        assert type(nfsn) is Nfsn
+
+    def test_constructor_implicit_loginfile(self, monkeypatch, tmpdir):
+        login_file = os.path.join(fixtures_dir, 'nfsn-api-credential')
+        copyfile(login_file, str(tmpdir.join('.nfsn-api')))
+        monkeypatch.setenv('HOME', str(tmpdir))
+        nfsn = Nfsn()
         assert type(nfsn) is Nfsn
 
 class TestNfsnAccount(NfsnTest):
