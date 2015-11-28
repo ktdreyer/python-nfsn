@@ -56,12 +56,10 @@ class NfsnTest(object):
 
 
 class TestNfsnConstructor(NfsnTest):
-    def test_constructor_no_args(self, tmpdir):
-        orig_home = os.environ['HOME']
-        os.environ['HOME'] = str(tmpdir)
+    def test_constructor_no_args(self, monkeypatch, tmpdir):
+        monkeypatch.setenv('HOME', str(tmpdir))
         with pytest.raises(IOError):
             Nfsn()
-        os.environ['HOME'] = orig_home
 
     def test_constructor_missing_api_key(self):
         with pytest.raises(ValueError):
