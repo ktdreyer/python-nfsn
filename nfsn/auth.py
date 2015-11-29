@@ -4,7 +4,11 @@ import random
 import requests
 import string
 import time
-import urlparse
+try:
+    from urllib.parse import urlparse
+except ImportError:
+    # Python 2
+    from urlparse import urlparse
 
 logging.basicConfig(level=logging.WARNING)
 log = logging.getLogger(__name__)
@@ -43,7 +47,7 @@ class NfsnAuth(requests.auth.AuthBase):
         timestamp = self._timestamp()
         salt = self._salt()
         api_key = self.api_key
-        request_uri = urlparse.urlparse(r.url).path
+        request_uri = urlparse(r.url).path
         body_hash = hashlib.sha1(r.body or '').hexdigest()
 
         log.debug("login: %s", login)

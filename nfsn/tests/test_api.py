@@ -4,7 +4,11 @@ import os
 import pytest
 import re
 from shutil import copyfile
-import urlparse
+try:
+    from urllib.parse import urlparse
+except ImportError:
+    # Python 2
+    from urlparse import urlparse
 
 tests_dir = os.path.dirname(os.path.abspath(__file__))
 fixtures_dir = os.path.join(tests_dir, 'fixtures')
@@ -28,7 +32,7 @@ def get_request_callback(request, uri, headers):
     # The response bodies are stored in flat files under the
     # "fixtures/payloads" directory (fixtures_dir).
     # E.g. tests/fixtures/payloads/dns/example.com/listRRs
-    request_path = urlparse.urlparse(uri).path
+    request_path = urlparse(uri).path
     payload_file = fixtures_dir + '/responses/' + request_path
 
     with open(payload_file) as data_file:
