@@ -48,7 +48,10 @@ class NfsnAuth(requests.auth.AuthBase):
         salt = self._salt()
         api_key = self.api_key
         request_uri = urlparse(r.url).path
-        body_hash = hashlib.sha1(r.body or '').hexdigest()
+        body = ''.encode('utf-8')
+        if r.body:
+            body = r.body.encode('utf-8')
+        body_hash = hashlib.sha1(body).hexdigest()
 
         log.debug("login: %s", login)
         log.debug("timestamp: %s", timestamp)
@@ -59,7 +62,7 @@ class NfsnAuth(requests.auth.AuthBase):
 
         string = ';'.join((login, timestamp, salt, api_key, request_uri, body_hash))
         log.debug("string to be hashed: %s", string)
-        string_hash = hashlib.sha1(string).hexdigest()
+        string_hash = hashlib.sha1(string.encode('utf-8')).hexdigest()
         log.debug("string_hash: %s", string_hash)
 
         return ';'.join((login, timestamp, salt, string_hash))

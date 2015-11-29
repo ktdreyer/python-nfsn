@@ -25,11 +25,11 @@ class NfsnBeanBag(BeanBag):
 
         """ NFSN sometimes returns simple strings rather than JSON. """
         try:
-            json.loads(response.content)
+            json.loads(response.content.decode('utf-8'))
         except ValueError as e:
             #log.debug("%s : %s" % (e, response.content))
             # Assume NFSN responded with a simple string (not JSON).
-            return response.content
+            return response.content.decode('utf-8')
 
         """ NFSN sends JSON in the HTTP body, but the Content-Type HTTP header
         is "application/x-nfsn-api". Set this content-type to JSON so BeanBag
