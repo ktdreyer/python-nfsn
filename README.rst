@@ -82,9 +82,11 @@ Authentication
 There are three ways to pass your authentication credentials to the ``Nfsn()``
 constructor:
 
-1) Call the constructor with no arguments::
+1) Call the constructor with no arguments:
 
-    n = Nfsn()
+   .. code-block:: python
+
+       n = Nfsn()
 
    By default, the library will look for a ``$HOME/.nfsn-api`` JSON file that
    contains your username and API key, like so::
@@ -95,17 +97,21 @@ constructor:
    (This matches the same file and format that the Perl NFSN API uses for
    authentication, by the way.)
 
-2) Call the constructor with an explicit path to an API key login file::
+2) Call the constructor with an explicit path to an API key login file:
 
-    n = Nfsn(login_file='/etc/nfsn-api')
+   .. code-block:: python
+
+       n = Nfsn(login_file='/etc/nfsn-api')
 
    In this example, the ``login_file`` should be a JSON file, similar to the
    example above.
 
 3) Specify a login string and API key string directly. You can skip the JSON
-   login_file altogether and just pass the strings you need::
+   login_file altogether and just pass the strings you need:
 
-    n = Nfsn(login='ktdreyer', api_key='aGVsbG90aGVyZWZyaWVuZA')
+   .. code-block:: python
+
+       n = Nfsn(login='ktdreyer', api_key='aGVsbG90aGVyZWZyaWVuZA')
 
 If you do not enter the correct login and key combination, each time you access
 a property or method using this library (see below), NearlyFreeSpeech.net will
@@ -283,7 +289,9 @@ Note that since we use `Beanbag <https://pypi.python.org/pypi/beanbag>`_
 internally, when we return a dict value, it is really an `AttrDict
 <https://pypi.python.org/pypi/attrdict>`_. If you want to convert the value to
 a plain dict, you will need to use the ``+`` operator. Prepend the value with a
-``+`` sign, like so::
+``+`` sign, like so:
+
+.. code-block:: python
 
     rrs = nfsn.dns('example.com').listRRs()
     print +rrs
