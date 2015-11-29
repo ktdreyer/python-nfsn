@@ -18,9 +18,9 @@ class Nfsn(object):
     def __init__(self, login=None, api_key=None, login_file=None):
         if (login is not None or api_key is not None):
             if (login is None):
-               raise ValueError('specify a "login" arg when using "api_key".')
+                raise ValueError('specify a "login" arg when using "api_key".')
             if (api_key is None):
-               raise ValueError('specify an "api_key" arg when using "login".')
+                raise ValueError('specify an "api_key" arg when using "login".')
             self.login = login
             self.api_key = api_key
         else:
