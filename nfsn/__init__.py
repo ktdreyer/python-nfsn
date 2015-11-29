@@ -95,7 +95,7 @@ class NfsnDns(NfsnObject):
             payload['data'] = data
         return POST(self.beanbag.listRRs, payload)
 
-    def removeRR(self, name, type, data, ttl=None):
+    def removeRR(self, name, type, data):
         payload = {'name': name, 'type': type, 'data': data}
         return POST(self.beanbag.removeRR, payload)
 
