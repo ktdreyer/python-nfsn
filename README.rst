@@ -296,4 +296,5 @@ will return a HTTP 404 Not Found error, and this library will raise a
 License and Copyright
 =====================
 
-This software is CC0 1.0 Universal (CC0 1.0) Public Domain Dedication.
+This software is CC0 1.0 Universal (CC0 1.0) Public Domain Dedication. See
+``COPYING`` for the full CC0 text.
