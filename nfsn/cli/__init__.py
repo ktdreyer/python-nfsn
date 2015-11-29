@@ -37,7 +37,7 @@ Examples:
 """
 
 def print_help(prog_name):
-    print _help % {'prog': prog_name, 'version': nfsn.__version__}
+    print(_help % {'prog': prog_name, 'version': nfsn.__version__})
 
 def main(argv=None):
 
