@@ -14,6 +14,7 @@ log = logging.getLogger('nfsn')
 API_ENDPOINT = 'https://api.nearlyfreespeech.net'
 
 class Nfsn(object):
+    """ Main NearlyFreeSpeech.net API object """
 
     def __init__(self, login=None, api_key=None, login_file=None):
         if (login is not None or api_key is not None):
