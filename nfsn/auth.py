@@ -24,10 +24,10 @@ class NfsnAuth(requests.auth.AuthBase):
         self.api_key = api_key
 
     def __call__(self, r):
-	""" API requests must include a custom X-NFSN-Authentication HTTP
-	    header. See
-	    https://members.nearlyfreespeech.net/wiki/API/Introduction for
-	    more explanation. """
+        """ API requests must include a custom X-NFSN-Authentication HTTP
+        header. See
+        https://members.nearlyfreespeech.net/wiki/API/Introduction for
+        more explanation. """
 
         header = self._header(r)
         log.debug("X-NFSN-Authentication header: %s", header)
@@ -36,9 +36,9 @@ class NfsnAuth(requests.auth.AuthBase):
         return r
 
     def _header(self, r):
-	""" Build the contents of the X-NFSN-Authentication HTTP header. See
-	    https://members.nearlyfreespeech.net/wiki/API/Introduction for
-	    more explanation. """
+        """ Build the contents of the X-NFSN-Authentication HTTP header. See
+        https://members.nearlyfreespeech.net/wiki/API/Introduction for
+        more explanation. """
         login = self.login
         timestamp = self._timestamp()
         salt = self._salt()

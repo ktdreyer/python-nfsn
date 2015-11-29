@@ -30,27 +30,27 @@ class TestNfsnBeanbag(object):
 
     @httpretty.activate
     def test_parse_fail_with_beanbag(self):
-	""" An ordinary BeanBag object will fail because of the
-	'application/x-nfsn-api' content-type header in the server's HTTP
-	response. """
+        """ An ordinary BeanBag object will fail because of the
+        'application/x-nfsn-api' content-type header in the server's HTTP
+        response. """
         nfsn = BeanBag(self.endpoint_url)
 
         httpretty.register_uri(
             httpretty.POST, self.api_url,
             body=self.request_callback)
 
-	# When this test no longer raises a BeanBagException, it's possible
-	# that the BeanBag authors might have updated their decoding function
-	# to be more lax about handling non-application/json content-types. If
-	# that's the case, this NfsnBeanBag wrapper class might become
-	# unnecessary.
+        # When this test no longer raises a BeanBagException, it's possible
+        # that the BeanBag authors might have updated their decoding function
+        # to be more lax about handling non-application/json content-types. If
+        # that's the case, this NfsnBeanBag wrapper class might become
+        # unnecessary.
         with pytest.raises(BeanBagException):
             POST(nfsn.dns['example.com'].listRRs)
 
     @httpretty.activate
     def test_parse_with_nfsnbeanbag(self):
-	""" The NfsnBeanBag class can handle the 'application/x-nfsn-api'
-	content-type in the server's HTTP response. """
+        """ The NfsnBeanBag class can handle the 'application/x-nfsn-api'
+        content-type in the server's HTTP response. """
 
         nfsn = NfsnBeanBag(self.endpoint_url)
 

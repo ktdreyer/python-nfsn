@@ -8,7 +8,7 @@ class NfsnBeanBag(BeanBag):
     """Tweak functionality in the BeanBag class to work with NFSN."""
 
     def encode(self, body):
-	""" Beanbag encodes the body as JSON, but NFSN expects the body to be
+        """ Beanbag encodes the body as JSON, but NFSN expects the body to be
         regular key-value pairs that are not JSON-encoded. """
         if isinstance(body, Request):
             req = body
@@ -28,7 +28,7 @@ class NfsnBeanBag(BeanBag):
             json.loads(response.content)
         except ValueError as e:
             #log.debug("%s : %s" % (e, response.content))
-	    # Assume NFSN responded with a simple string (not JSON).
+            # Assume NFSN responded with a simple string (not JSON).
             return response.content
 
         """ NFSN sends JSON in the HTTP body, but the Content-Type HTTP header
