@@ -38,11 +38,14 @@ If you want to hack on the code::
 Quickstart
 ==========
 
-Use the ``pynfsn`` command-line utility, a thin wrapper that lets you explore
-the API::
+Obtain your API key from NFSN by submitting a secure support request via the
+control panel, and store it in a JSON file in your home directory, like so::
 
     $ cat ~/.nfsn-api
     { "login": "ktdreyer",  "api-key": "aGVsbG90aGVyZWZyaWVuZA" }
+
+Use the ``pynfsn`` command-line utility, a thin wrapper that lets you explore
+the API ::
 
     $ pynfsn member ktdreyer accounts
     [u'D41D-8CD98F00', u'B204-E9800998', u'ECF8-427E6D7F']
