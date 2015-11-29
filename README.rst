@@ -7,6 +7,9 @@
 .. image:: https://coveralls.io/repos/ktdreyer/python-nfsn/badge.svg?branch=master&service=github
      :target: https://coveralls.io/github/ktdreyer/python-nfsn?branch=master
 
+.. image:: https://badge.fury.io/py/python-nfsn.svg
+          :target: https://badge.fury.io/py/python-nfsn
+
 A modern Python library for accessing NearlyFreeSpeech.net's API.
 
 * Clean, Pythonic API
