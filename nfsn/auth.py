@@ -69,8 +69,11 @@ class NfsnAuth(requests.auth.AuthBase):
 
 
     def _salt(self):
+        """ Return a 16-character alphanumeric string. """
         return ''.join(random.SystemRandom().choice(self.SALT_CHARACTERS) for _ in range(16))
 
     def _timestamp(self):
+        """ Return the current number of seconds since the Unix epoch,
+        as a string. """
         return str(int(time.time()))
 
