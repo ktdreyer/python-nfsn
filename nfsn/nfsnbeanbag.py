@@ -23,7 +23,7 @@ class NfsnBeanBag(BeanBag):
             log.error(response.content)
             raise RuntimeError('Could not authenticate with login/key.')
 
-        """ NFSN sometimes returns simple strings rather than JSON. """
+        # NFSN sometimes returns simple strings rather than JSON.
         try:
             json.loads(response.content.decode('utf-8'))
         except ValueError as e:
@@ -31,9 +31,9 @@ class NfsnBeanBag(BeanBag):
             # Assume NFSN responded with a simple string (not JSON).
             return response.content.decode('utf-8')
 
-        """ NFSN sends JSON in the HTTP body, but the Content-Type HTTP header
-        is "application/x-nfsn-api". Set this content-type to JSON so BeanBag
-        will parse it. """
+        # NFSN sends JSON in the HTTP body, but the Content-Type HTTP header
+        # "application/x-nfsn-api". Set this content-type to JSON so BeanBag
+        # will parse it.
         res_content = response.headers.get('content-type', None)
         if res_content is None:
             # Not sure this can ever happen?
@@ -44,7 +44,7 @@ class NfsnBeanBag(BeanBag):
             log.debug("Changing Content-Type to 'application/json'")
             response.headers['content-type'] = self.mime_json
 
-        """ Provide logging for other errors """
+        # Provide logging for other errors
         try:
             return super(~NfsnBeanBag, self).decode(response)
         except BeanBagException as e:
