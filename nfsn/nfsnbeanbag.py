@@ -38,7 +38,6 @@ class NfsnBeanBag(BeanBag):
         if res_content is None:
             # Not sure this can ever happen?
             log.debug('found no Content-Type header')
-            pass
         elif res_content == 'application/x-nfsn-api':
             log.debug("found 'application/x-nfsn-api' Content-Type")
             log.debug("Changing Content-Type to 'application/json'")
