@@ -6,7 +6,7 @@ import logging
 import os
 import requests
 
-__version__ = '1.1.0'
+__version__ = '1.1.1'
 
 logging.basicConfig(level=logging.WARNING)
 log = logging.getLogger('nfsn')
