@@ -14,7 +14,7 @@ A modern Python library for accessing NearlyFreeSpeech.net's API.
 
 * Clean, Pythonic API
 * Supports 100% of NFSN's API (as of "today" :)
-* Supports Python 2.6 through 3.5
+* Supports Python 2.6 through 3.6
 * Good test coverage (using ``httpretty``)
 * Cryptographically secure salt generation with ``random.SystemRandom()``
 
