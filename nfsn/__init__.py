@@ -1,5 +1,5 @@
-from .auth import NfsnAuth
-from .nfsnbeanbag import NfsnBeanBag
+from nfsn.auth import NfsnAuth
+from nfsn.nfsnbeanbag import NfsnBeanBag
 from beanbag.v2 import POST, GET, PUT
 import json
 import logging
