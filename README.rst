@@ -192,9 +192,9 @@ DNS API
 
     # Add a DNS resource record. The name+type must not exist yet.
     nfsn.dns('example.com').addRR(
-        name = 'testing',
-        type = 'A',
-        data = '192.0.2.2'
+        name='testing',
+        type='A',
+        data='192.0.2.2'
     )
 
     # List all DNS resource records:
@@ -226,9 +226,9 @@ DNS API
     # The name+type must exist, or Nfsn will raise an an error. You must
     # specify all three parameters (name, type, data).
     nfsn.dns('example.com').removeRR(
-        name = 'testing',
-        type = 'A',
-        data = '192.0.2.2'
+        name='testing',
+        type='A',
+        data='192.0.2.2'
     )
 
 
